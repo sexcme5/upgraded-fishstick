@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebDAW - Professional Digital Audio Workstation</title>
+    <!-- Stylesheet -->
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation Bar */
+        .nav-bar {
+            background-color: #333;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .transport-controls {
+            display: flex;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        .transport-button {
+            background-color: #444;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* Tracks Panel */
+        .tracks-panel {
+            flex: 2;
+            margin-right: 20px;
+        }
+
+        /* Track Item */
+        .track-item {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 3px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .track-name {
+            color: #ccc;
+            font-size: 12px;
+        }
+
+        /* Editor Panel */
+        .editor-panel {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .timeline {
+            height: 400px;
+            background-color: #333;
+            position: relative;
+        }
+
+        .clip {
+            position: absolute;
+            background-color: #4a99e6;
+            border-radius: 2px;
+            cursor: move;
+        }
+
+        /* Controls */
+        . controls {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tempo-controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .time-signature {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #333;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Navigation Bar -->
+        <div class="nav-bar">
+            <h1 class="app-name">WebDAW</h1>
+            <div class="transport-controls">
+                <button class="transport-button">Play</button>
+                <button class="transport-button">Stop</button>
+                <button class="transport-button">Record</button>
+            </div>
+            <div class="settings">
+                <button class="transport-button">Settings</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Tracks Panel -->
+            <div class="tracks-panel">
+                <h2>Tracks</h2>
+                <div class="track-list">
+                    <div class="track-item">
+                        <span class="track-name">Track 1</span>
+                        <button class="transport-button">Delete</button>
+                    </div>
+                    <div class="track-item">
+                        <span class="track-name">Track 2</span>
+                        <button class="transport-button">Delete</button>
+                    </div>
+                    <div class="track-item">
+                        <span class="track-name">Track 3</span>
+                        <button class="transport-button">Delete</button>
+                    </div>
+                </div>
+                <button class="transport-button" style="width: 100%; margin-top: 10px;">Add Track</button>
+            </div>
+
+            <!-- Editor Panel -->
+            <div class="editor-panel">
+                <div class="controls">
+                    <div class="tempo-controls">
+                        <label>BPM:</label>
+                        <input type="number" value="120">
+                        <label>Metronome:</label>
+                        <input type="checkbox">
+                    </div>
+                    <div class="time-signature">
+                        <label>Time Signature:</label>
+                        <select>
+                            <option>4/4</option>
+                            <option>3/4</option>
+                            <option>2/4</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <div class="clip" style="width: 100px; height: 20px; top: 50px; left: 100px;"></div>
+                    <div class="clip" style="width: 150px; height: 20px; top: 100px; left: 200px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>WebDAW - Professional Digital Audio Workstation</p>
+            <p>Version 1.0.0</p>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        // Transport Controls
+        const playButton = document.querySelector('button:contains("Play")');
+        const stopButton = document.querySelector('button:contains("Stop")');
+        const recordButton = document.querySelector('button:contains("Record")');
+
+        playButton.addEventListener('click', () => {
+            // Implement play functionality
+        });
+
+        stopButton.addEventListener('click', () => {
+            // Implement stop functionality
+        });
+
+        recordButton.addEventListener('click', () => {
+            // Implement record functionality
+        });
+
+        // Add Track Functionality
+        const addTrackButton = document.querySelector('button:contains("Add Track")');
+        addTrackButton.addEventListener('click', () => {
+            const tracksList = document.querySelector('.track-list');
+            const newTrack = document.createElement('div');
+            newTrack.className = 'track-item';
+            newTrack.innerHTML = `
+                <span class="track-name">Track ${tracksList.children.length + 1}</span>
+                <button class="transport-button">Delete</button>
+            `;
+            tracksList.appendChild(newTrack);
+        });
+
+        // Tempo Controls
+        const tempoInput = document.querySelector('input[type="number"]');
+        tempoInput.addEventListener('change', (e) => {
+            // Update BPM value
+            console.log('BPM changed to:', e.target.value);
+        });
+
+        // Metronome
+        const metronomeCheckbox = document.querySelector('input[type="checkbox"]');
+        metronomeCheckbox.addEventListener('change', (e) => {
+            // Toggle metronome on/off
+            console.log('Metronome:', e.target.checked);
+        });
+
+        // Time Signature
+        const timeSignatureSelect = document.querySelector('select');
+        timeSignatureSelect.addEventListener('change', (e) => {
+            // Update time signature
+            console.log('Time Signature changed to:', e.target.value);
+        });
+    </script>
+</body>
+</html>
